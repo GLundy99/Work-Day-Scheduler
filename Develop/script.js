@@ -3,13 +3,13 @@ var currentDay = $("#currentDay");
 currentDay.text(moment().format("LLLL"));
 
 $(".saveBtn").click(function() {
-    var saveText = {index: 0, text: ""}
+    var saveNote = {index: 0, text: ""}
     var textArea = $(this).parent().siblings(".form-group").children("textarea");
     console.log($(this).data("btnnum"));
-    saveText.index = $(this).data("btnnum");
-    saveText.text = textArea.val();
+    saveNote.index = $(this).data("btnnum");
+    saveNote.text = textArea.val();
     console.log(saveNote);
-    localStorage.setItem(saveText.index, saveText.text);
+    localStorage.setItem(saveNote.index, saveNote.text);
 
 })
 
@@ -21,7 +21,9 @@ for(var i = 0; i < hours.length; i++) {
     }
 }
 
+//compare current to row time
 $(document).ready(function(){
+    //loops through div elements with form-group
     $(".form-group").each(function(i){
         var currentHour = moment().hours();
         if(currentHour < hours[i]){
